@@ -4,10 +4,12 @@ Run Laya's multilingual decision model on the Qualcomm Hexagon NPU on Windows
 on ARM using ONNX Runtime QNN. The model returns typed `choice`, `score`, and
 `noul` decisions without generating text.
 
-This repository adapts the QNN bucket preparation and serving path from
-[`piffie/laya-snapdragon`](https://github.com/piffie/laya-snapdragon) to the
-multilingual FP16 ONNX checkpoint. The checkpoint, tokenizer, and compiled QNN
-contexts are downloaded or generated locally and are not committed here.
+This repository includes the QNN runtime source adapted from
+[`piffie/laya-snapdragon`](https://github.com/piffie/laya-snapdragon), with the
+bucket preparation and serving path configured for the multilingual FP16 ONNX
+checkpoint. Runtime implementation files are included under `laya-snapdragon/`;
+the model checkpoint and compiled QNN contexts are downloaded or generated
+locally and are not committed here.
 
 ## Tested system
 
@@ -22,7 +24,7 @@ contexts are downloaded or generated locally and are not committed here.
 Use native ARM64 Python 3.11. `platform.machine()` should report `ARM64`.
 
 ```powershell
-git clone --recurse-submodules https://github.com/asopitech/laya-multilingual-qnn.git
+git clone https://github.com/asopitech/laya-multilingual-qnn.git
 cd laya-multilingual-qnn
 py -V:3.11-arm64 -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -104,7 +106,6 @@ comparison.
 
 ## License
 
-This adapter is provided under Apache-2.0. The Laya weights retain their
-upstream license. The QNN runtime is included as a pinned Apache-2.0 submodule;
-see [NOTICE](NOTICE) and `laya-snapdragon/NOTICE`.
-
+This adapter and the included QNN runtime source are provided under Apache-2.0.
+The Laya weights retain their upstream license. See [NOTICE](NOTICE) and
+`laya-snapdragon/NOTICE` for attribution and third-party notices.
