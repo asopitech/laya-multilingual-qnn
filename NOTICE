@@ -1,0 +1,15 @@
+Laya Multilingual QNN adapter
+Copyright 2026 asopitech contributors
+
+This repository adapts the QNN runtime from:
+https://github.com/piffie/laya-snapdragon
+Copyright 2026 laya-snapdragon contributors. Licensed under Apache-2.0.
+Pinned upstream revision: 2d3adc69d7deb926e3bb1eb82255cc70143753e8
+
+The Laya multilingual model and weights are provided by ConvAI Innovations
+under Apache-2.0. The ONNX checkpoint is downloaded from:
+https://huggingface.co/mizchi/laya-multilingual-onnx
+
+ONNX Runtime and Qualcomm QNN libraries are distributed under their own
+licenses by their respective owners.
+
