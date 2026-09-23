@@ -11,6 +11,9 @@ checkpoint. Runtime implementation files are included under `laya-snapdragon/`;
 the model checkpoint and compiled QNN contexts are downloaded or generated
 locally and are not committed here.
 
+See [RESEARCH_REPORT.md](RESEARCH_REPORT.md) for implementation analysis,
+benchmark interpretation, model limitations, and reproducibility notes.
+
 ## Tested system
 
 - Lenovo Yoga, Snapdragon X Elite X1E78100 (12 cores), 32 GB RAM
