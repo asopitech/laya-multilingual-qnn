@@ -1,0 +1,127 @@
+{
+  "status": "completed",
+  "base_model": "C:\\Users\\asopi\\workspaces\\ai-works\\models\\laya-multilingual-trainable",
+  "output_model": "C:\\Users\\asopi\\workspaces\\ai-works\\models\\laya-multilingual-ja-rlcd",
+  "device": "cpu",
+  "deployment_target": "Qualcomm QNN HTP/NPU",
+  "parameter_counts": {
+    "encoder": 306939648,
+    "decision_head": 14770945,
+    "act_head": 198402
+  },
+  "fingerprints_before": {
+    "encoder": "79d7cfa13a24adf4a6354aa0a39003496c29834b11067cb448c303794c1af9e7",
+    "decision_head": "56e3fa214d4872c19a4a8c8ebff63324c9cb837ef83405d15fe507d74659f4b6",
+    "act_head": "f76b2bdfc5ceefba18109d01b09ed7d0c8ed75324b96e597b3c2779113e4664c"
+  },
+  "fingerprints_after": {
+    "encoder": "b6197fc307319abe665a64b671d96f0aa2d017cd4a727803527614920a8c47d6",
+    "decision_head": "6793219a658aee4b181cab4bff2c32962b11cb6b12828b7ef275da21ca5dc537",
+    "act_head": "849737bd2da43770ebdf3525bf6cf64625c6861dbb3661b26a2044a69a7ea0fc"
+  },
+  "updated": {
+    "encoder": true,
+    "decision_head": true,
+    "act_head": true
+  },
+  "evaluation_before": {
+    "count": 40,
+    "accuracy": 0.425,
+    "nll": 1.5836272060858525,
+    "accuracy_by_dataset": {
+      "jglue-jcommonsenseqa": 0.15,
+      "jglue-jnli": 0.7
+    }
+  },
+  "evaluation_after": {
+    "count": 40,
+    "accuracy": 0.375,
+    "nll": 3.119632987242878,
+    "accuracy_by_dataset": {
+      "jglue-jcommonsenseqa": 0.2,
+      "jglue-jnli": 0.55
+    }
+  },
+  "history": [
+    {
+      "step": 1,
+      "datasets": [
+        "jglue-jcommonsenseqa"
+      ],
+      "loss": 1.425179362297058,
+      "loss_rl": -0.30962908267974854,
+      "loss_ce": 1.7348084449768066,
+      "reward": -1.4881830215454102,
+      "gradient_l2": {
+        "encoder": 428.1875174200161,
+        "decision_head": 18.18624547533337,
+        "act_head": 0.0
+      }
+    },
+    {
+      "step": 2,
+      "datasets": [
+        "jglue-jnli"
+      ],
+      "loss": 0.013876685872673988,
+      "loss_rl": 0.013674527406692505,
+      "loss_ce": 0.00020215852418914437,
+      "reward": 0.7497881650924683,
+      "gradient_l2": {
+        "encoder": 1221.0924151201816,
+        "decision_head": 289.4383310524233,
+        "act_head": 0.0
+      }
+    },
+    {
+      "step": 3,
+      "datasets": [
+        "jglue-jnli"
+      ],
+      "loss": -0.013959994539618492,
+      "loss_rl": -0.013961663469672203,
+      "loss_ce": 1.6689286894688848e-06,
+      "reward": 0.7499982118606567,
+      "gradient_l2": {
+        "encoder": 216.48709504354773,
+        "decision_head": 47.200512357447344,
+        "act_head": 0.0
+      }
+    },
+    {
+      "step": 4,
+      "datasets": [
+        "jglue-jnli"
+      ],
+      "loss": -0.2254735380411148,
+      "loss_rl": -0.2256683111190796,
+      "loss_ce": 0.00019476900342851877,
+      "reward": 0.7497813701629639,
+      "gradient_l2": {
+        "encoder": 2007.6142463604497,
+        "decision_head": 170.90907717350998,
+        "act_head": 0.0
+      }
+    }
+  ],
+  "training": {
+    "algorithm": "RLCD with proper-scoring reward and cross-entropy guidance",
+    "datasets": [
+      "JGLUE/JNLI",
+      "JGLUE/JCommonsenseQA"
+    ],
+    "train_items": 16,
+    "eval_items": 40,
+    "steps": 4,
+    "batch_size": 1,
+    "group_size": 4,
+    "sigma": 0.2,
+    "encoder_lr": 2.5e-05,
+    "head_lr": 0.0001,
+    "max_len": 128,
+    "head_max_len": 96,
+    "seed": 20260924,
+    "elapsed_seconds": 87.4049711227417,
+    "act_head_note": "No action labels were supplied; its zero gradient is connected only for graph completeness."
+  }
+}

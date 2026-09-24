@@ -1,8 +1,12 @@
 # Laya Multilingual QNN Research Report
 
-**調査日:** 2026-09-23  
-**対象:** `asopitech/laya-multilingual-qnn` のソースと、Snapdragon X Elite上で記録された測定値  
+**調査日:** 2026-09-23
+**対象:** `asopitech/laya-multilingual-qnn` のソースと、Snapdragon X Elite上で記録された測定値
 **目的:** 多言語Layaの日本語入力をWindows ARM64上のQualcomm NPUで実行する方式、性能、品質上の制約を整理する。
+
+> **2026-09-24更新:** 公開データセットを使ったNPU精度改善実験を実機で再実行した。JGLUE、Typed Decisions、法令QAの全実測値とRLCD fine-tuning方針は[reports/NPU_ACCURACY_REPORT.md](reports/NPU_ACCURACY_REPORT.md)を参照。
+>
+> **2026-09-24 RLCD追試:** encoderとdecision headをともに実更新し、ONNX/QNN HTPへ再展開してNPU評価まで実施した。パイプラインは成立したが4-step smoke checkpointは精度が悪化した。詳細は[reports/RLCD_SMOKE_REPORT.md](reports/RLCD_SMOKE_REPORT.md)を参照。
 
 ## 要約
 
@@ -84,4 +88,4 @@ HTTPサーバーは`127.0.0.1:8788`にバインドし、`/decision`と`/v1/syste
 
 ## 再現性に関する注記
 
-このレポート作成時点では、本実行環境に`py` Python Launcherがなく、Snapdragon上でのNPU実行・測定は再実行していない。数値はリポジトリREADMEに記載された実測結果として引用し、モデルカードおよびONNX Runtime公式資料で仕様・制約を照合した。レポート内の性能結論は独立した再測定ではない。
+本レポートの約60問/秒という性能表は、作成時にREADMEの既存測定値を引用したもので、同じHTTPベンチを再測定した値ではない。その後、native ARM64 Python環境とQNN HTPモデルを確認し、2026-09-24に精度改善実験を実機で再実行した。新しい実測の条件と結果は[reports/NPU_ACCURACY_REPORT.md](reports/NPU_ACCURACY_REPORT.md)に分離して記録している。

@@ -1,0 +1,269 @@
+{
+  "system": {
+    "machine": "ARM64",
+    "backend": "QNNExecutionProvider/HTP",
+    "device_mode": "npu",
+    "cpu_model_fallback": false,
+    "models": "C:\\Users\\asopi\\workspaces\\ai-works\\models\\laya-multilingual-ja-rlcd-npu",
+    "compiled_buckets": [
+      "128x8",
+      "256x8"
+    ],
+    "max_tokens": 256,
+    "head_tokens": 160
+  },
+  "configuration": {
+    "limit": 40,
+    "calibration": 20,
+    "order_runs": 4,
+    "seed": 20260924
+  },
+  "suites": {
+    "typed": {
+      "description": "Typed Decisions on QNN HTP",
+      "methods": {
+        "labels_only": {
+          "cases": 40,
+          "accuracy": 0.35,
+          "nll": 1.677014225692611,
+          "brier": 0.3731196729352244,
+          "kl_to_gold": 0.9629175467429449,
+          "ece": 0.31186772145240216,
+          "p50_case_ms": 52.64129998977296,
+          "p95_case_ms": 53.59896996815223,
+          "npu_calls": 40,
+          "npu_calls_per_second": 19.912814727916253,
+          "buckets": {
+            "256x8": 37,
+            "128x8": 3
+          },
+          "temperature": 1.0
+        },
+        "described_criteria": {
+          "cases": 40,
+          "accuracy": 0.3,
+          "nll": 2.037973469058702,
+          "brier": 0.5574048014883519,
+          "kl_to_gold": 1.343250638106817,
+          "ece": 0.4363850860188258,
+          "p50_case_ms": 52.66919999849051,
+          "p95_case_ms": 53.58117997820955,
+          "npu_calls": 40,
+          "npu_calls_per_second": 18.914237644136502,
+          "buckets": {
+            "256x8": 40
+          },
+          "temperature": 1.0
+        },
+        "criteria_order_ensemble": {
+          "cases": 40,
+          "accuracy": 0.325,
+          "nll": 1.9747248190292979,
+          "brier": 0.5115001136724306,
+          "kl_to_gold": 1.2487731481573685,
+          "ece": 0.38578777659344865,
+          "p50_case_ms": 53.31860002479516,
+          "p95_case_ms": 212.76924497215077,
+          "npu_calls": 76,
+          "npu_calls_per_second": 18.87217545243712,
+          "buckets": {
+            "256x8": 76
+          },
+          "temperature": 1.0
+        },
+        "ensemble_temperature_calibrated": {
+          "cases": 40,
+          "accuracy": 0.325,
+          "nll": 1.2488371971117131,
+          "brier": 0.26506145688947785,
+          "kl_to_gold": 0.47827089632788483,
+          "ece": 0.16233027409006523,
+          "p50_case_ms": 53.31860002479516,
+          "p95_case_ms": 212.76924497215077,
+          "npu_calls": 76,
+          "npu_calls_per_second": 18.87217545243712,
+          "buckets": {
+            "256x8": 76
+          },
+          "temperature": 4.0
+        }
+      }
+    },
+    "jglue": {
+      "description": "JGLUE Japanese decisions on QNN HTP",
+      "methods": {
+        "direct": {
+          "cases": 40,
+          "accuracy": 0.475,
+          "nll": 2.576161770244242,
+          "brier": 0.7039213331085674,
+          "kl_to_gold": 2.576161770244242,
+          "ece": 0.2711993566638936,
+          "p50_case_ms": 16.753750009229407,
+          "p95_case_ms": 17.21730000572279,
+          "npu_calls": 40,
+          "npu_calls_per_second": 59.45625765845495,
+          "buckets": {
+            "128x8": 40
+          },
+          "temperature": 1.0
+        },
+        "option_order_ensemble": {
+          "cases": 40,
+          "accuracy": 0.55,
+          "nll": 2.050849431021273,
+          "brier": 0.6700848537154871,
+          "kl_to_gold": 2.050849431021273,
+          "ece": 0.2489797615194289,
+          "p50_case_ms": 59.17284995666705,
+          "p95_case_ms": 67.3175500385696,
+          "npu_calls": 140,
+          "npu_calls_per_second": 59.66435561571037,
+          "buckets": {
+            "128x8": 140
+          },
+          "temperature": 1.0
+        },
+        "ensemble_temperature_calibrated": {
+          "cases": 40,
+          "accuracy": 0.55,
+          "nll": 1.2706337031801294,
+          "brier": 0.6455253211483196,
+          "kl_to_gold": 1.2706337031801294,
+          "ece": 0.208819324243333,
+          "p50_case_ms": 59.17284995666705,
+          "p95_case_ms": 67.3175500385696,
+          "npu_calls": 140,
+          "npu_calls_per_second": 59.66435561571037,
+          "buckets": {
+            "128x8": 140
+          },
+          "temperature": 4.0
+        }
+      }
+    },
+    "lawqa": {
+      "description": "Japanese law QA context methods on QNN HTP",
+      "methods": {
+        "closed_book": {
+          "cases": 40,
+          "accuracy": 0.3,
+          "nll": 1.5864916686181338,
+          "brier": 0.8371437647524603,
+          "kl_to_gold": 1.5864916686181338,
+          "ece": 0.1970779093893041,
+          "p50_case_ms": 52.6669499813579,
+          "p95_case_ms": 53.896119954879396,
+          "npu_calls": 40,
+          "npu_calls_per_second": 21.403163580374812,
+          "buckets": {
+            "256x8": 33,
+            "128x8": 7
+          },
+          "temperature": 1.0
+        },
+        "context_head_truncation": {
+          "cases": 40,
+          "accuracy": 0.275,
+          "nll": 1.6356848481995971,
+          "brier": 0.8676463443479181,
+          "kl_to_gold": 1.6356848481995971,
+          "ece": 0.21409580449258303,
+          "p50_case_ms": 52.72110001533292,
+          "p95_case_ms": 54.01098997099325,
+          "npu_calls": 40,
+          "npu_calls_per_second": 18.870397263169902,
+          "buckets": {
+            "256x8": 40
+          },
+          "temperature": 1.0
+        },
+        "retrieved_top1": {
+          "cases": 40,
+          "accuracy": 0.325,
+          "nll": 1.8105046531991675,
+          "brier": 0.8875348498290034,
+          "kl_to_gold": 1.8105046531991675,
+          "ece": 0.3102454646185547,
+          "p50_case_ms": 52.685300004668534,
+          "p95_case_ms": 54.29968000098597,
+          "npu_calls": 40,
+          "npu_calls_per_second": 19.188134670007518,
+          "buckets": {
+            "256x8": 39,
+            "128x8": 1
+          },
+          "temperature": 1.0
+        },
+        "retrieved_top3_fusion": {
+          "cases": 40,
+          "accuracy": 0.2,
+          "nll": 1.570152860436202,
+          "brier": 0.8167165803004597,
+          "kl_to_gold": 1.5701528604362023,
+          "ece": 0.23606514153465996,
+          "p50_case_ms": 158.3960000134539,
+          "p95_case_ms": 159.7923549823463,
+          "npu_calls": 120,
+          "npu_calls_per_second": 19.481731079470556,
+          "buckets": {
+            "256x8": 115,
+            "128x8": 5
+          },
+          "temperature": 1.0
+        },
+        "retrieved_top3_order_ensemble": {
+          "cases": 40,
+          "accuracy": 0.2,
+          "nll": 1.5235093192930873,
+          "brier": 0.8097311497309212,
+          "kl_to_gold": 1.5235093192930873,
+          "ece": 0.23925591270336471,
+          "p50_case_ms": 633.2083000452258,
+          "p95_case_ms": 637.485424958868,
+          "npu_calls": 480,
+          "npu_calls_per_second": 19.49372576808835,
+          "buckets": {
+            "256x8": 460,
+            "128x8": 20
+          },
+          "temperature": 1.0
+        },
+        "optionwise_noul_verification": {
+          "cases": 40,
+          "accuracy": 0.475,
+          "nll": 1.3521849448279026,
+          "brier": 0.7353757078261538,
+          "kl_to_gold": 1.3521849448279026,
+          "ece": 0.20956387533454565,
+          "p50_case_ms": 210.49279998987913,
+          "p95_case_ms": 212.2489300003508,
+          "npu_calls": 160,
+          "npu_calls_per_second": 19.066405585254582,
+          "buckets": {
+            "256x8": 159,
+            "128x8": 1
+          },
+          "temperature": 1.0
+        },
+        "verification_temperature_calibrated": {
+          "cases": 40,
+          "accuracy": 0.475,
+          "nll": 1.361606247497632,
+          "brier": 0.7389483832869312,
+          "kl_to_gold": 1.361606247497632,
+          "ece": 0.22965187977572496,
+          "p50_case_ms": 210.49279998987913,
+          "p95_case_ms": 212.2489300003508,
+          "npu_calls": 160,
+          "npu_calls_per_second": 19.066405585254582,
+          "buckets": {
+            "256x8": 159,
+            "128x8": 1
+          },
+          "temperature": 1.5157165665103984
+        }
+      }
+    }
+  }
+}
