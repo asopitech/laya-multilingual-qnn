@@ -112,6 +112,12 @@ Accuracyは12.5ポイント改善した。温度校正はNLLを改善したが�
 
 ## 強化学習について
 
+### このPC固有の制約
+
+このPCにはNVIDIA GPU/CUDAがなく、AI acceleratorはQualcomm HTP/NPUだけである。QNN HTPは本構成ではONNX推論専用で、PyTorchのautograd、backward、optimizerを実行できない。ローカルのPyTorchもCPU-only buildであるため、322M parameterのencoderとdecision headを更新する処理はCPUへ載る。
+
+実際に行った最小smoke runでも、batch size 1、sequence 128、4 optimizer stepに87.4秒を要した。これは更新・変換経路の確認には使えるが、数千から数万decision、複数epoch、複数seedを必要とするまともなRLCD fine-tuningには不十分である。本学習はCUDA GPUを持つ別PCまたはcloudで行い、このPCは完成checkpointのQNN変換とNPU実測に使う。
+
 ### 現状
 
 Laya multilingualの現在の重み自体はRLCD（Reinforcement Learning for Calibrated Decisions）で学習されている。ローカル設定には`training.updates=15987`、`epochs_completed=4`、`hours=4.97`、`act_costs.escalate=0.5`、`cost_wrong_act=3.0`が記録されている。

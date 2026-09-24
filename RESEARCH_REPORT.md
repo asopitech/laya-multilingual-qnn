@@ -8,6 +8,8 @@
 >
 > **2026-09-24 RLCD追試:** encoderとdecision headをともに実更新し、ONNX/QNN HTPへ再展開してNPU評価まで実施した。パイプラインは成立したが4-step smoke checkpointは精度が悪化した。詳細は[reports/RLCD_SMOKE_REPORT.md](reports/RLCD_SMOKE_REPORT.md)を参照。
 
+> **学習環境の制約:** このPCにはNVIDIA GPU/CUDAがなく、Qualcomm HTP/NPUは本構成では推論専用である。322Mモデルの重み更新はCPUでしか動かず、4 stepでも87.4秒を要したため、ローカルでの本格RLCDは実用的ではない。本学習は外部CUDA GPU、変換と評価はこのPCのNPU、という分担が必要である。
+
 ## 要約
 
 本実装は、Laya多言語版のONNXモデルをONNX Runtime QNN Execution Provider経由でSnapdragonのHexagon HTP/NPUに載せるローカル推論アダプターである。Layaは自由文を生成するLLMではなく、与えた状態に対して`choice`、`score`、`noul`（二値確率）を返す非自己回帰型の判定モデルである。モデルの追加学習や日本語専用化を行ったものではない。

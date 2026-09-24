@@ -78,6 +78,14 @@ cross-entropy guidance. QNN HTP is an inference target, so training runs in
 PyTorch and the resulting checkpoint is exported and compiled for NPU use in a
 separate step.
 
+On the tested PC there is no NVIDIA GPU or CUDA backend. The Qualcomm HTP/NPU
+cannot run PyTorch autograd or optimizer steps, and the installed ARM64 PyTorch
+build is CPU-only. The local command below is therefore a smoke test for the
+weight-update and deployment pipeline, not a practical full training run. The
+4-step, batch-1, 128-token run took 87.4 seconds. Production fine-tuning needs
+an external CUDA GPU; this PC remains the QNN compilation and NPU evaluation
+target.
+
 ```powershell
 & ..\.runtime\python311-arm64-embed\python.exe demos\rlcd_finetune.py `
   --model-dir ..\models\laya-multilingual-trainable `
